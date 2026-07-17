@@ -16,10 +16,10 @@ brew install cmake libomp
 cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --parallel
 ```
 
-## Использование
+## Usage
 
 ```bash
-# 1. CSV → бинарный формат (добавить 1 для 1-индексированных графов: SNAP, KONECT)
+# 1. CSV => бинарный формат (добавить 1 для 1-индексированных графов: SNAP, KONECT)
 ./build/katz preprocess edges.csv data/out [1]
 
 # 2. Сортировка рёбер
@@ -30,14 +30,13 @@ cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --parallel
 ```
 
 Результат: `data/out/katz_scores.csv` (колонки `vertex,rank`).
-
-**Выбор alpha:** рекомендуется $\alpha = 0.3/\rho(A)$, где $\rho(A)$ — спектральный радиус матрицы смежности. Стандартное $\alpha = 1/d_{\max}$ даёт слабую дифференциацию вершин. Подробнее — в `report/report.md`.
+Выбор alpha: рекомендуется $\alpha = 0.3/\rho(A)$, где $\rho(A)$ — спектральный радиус матрицы смежности. Стандартное $\alpha = 1/d_{\max}$ даёт слабую дифференциацию вершин. Подробнее: в `report/report.md`.
 
 ## Формат входных данных
 
 CSV, первые две колонки — `src` и `dst`. Заголовок опционален, строки с `#` и `%` игнорируются.
 
-## Проверка
+## Checking
 
 ```bash
 pip install numpy
